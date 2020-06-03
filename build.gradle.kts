@@ -26,15 +26,15 @@ dependencies {
   implementation(enforcedPlatform("io.micronaut:micronaut-bom:$micronautVersion"))
   implementation("io.micronaut:micronaut-inject")
   implementation("io.micronaut:micronaut-validation")
-  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
-  implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+  implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
   implementation("io.micronaut:micronaut-runtime")
   implementation("javax.annotation:javax.annotation-api")
   implementation("io.micronaut:micronaut-http-server-netty")
   implementation("io.micronaut:micronaut-http-client")
   implementation("io.micronaut.graphql:micronaut-graphql")
   runtimeOnly("ch.qos.logback:logback-classic:1.2.3")
-  runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8")    // Align versions of all Kotlin components
+  runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8") // Align versions of all Kotlin components
   implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
 
   kaptTest(enforcedPlatform("io.micronaut:micronaut-bom:$micronautVersion"))
