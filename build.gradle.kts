@@ -11,6 +11,7 @@ plugins {
 
   // Apply the application plugin to add support for building a CLI application.
   application
+  jacoco
 }
 
 repositories {
@@ -61,5 +62,17 @@ spotless {
   kotlinGradle {
     target("*.gradle.kts")
     ktlint().userData(mapOf("indent_size" to "2", "continuation_indent_size" to "2"))
+  }
+}
+
+tasks.check {
+  dependsOn(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+  reports {
+    xml.isEnabled = true
+    csv.isEnabled = false
+    html.isEnabled = false
   }
 }
