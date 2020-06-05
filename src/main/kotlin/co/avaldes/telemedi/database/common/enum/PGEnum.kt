@@ -22,7 +22,8 @@ package co.avaldes.telemedi.database.common.enum
 import org.postgresql.util.PGobject
 
 /**
- * Class that implements a postgresql enum. See [Datatypes](https://github.com/JetBrains/Exposed/wiki/DataTypes#how-to-use-database-enum-types)
+ * Class that implements a postgresql enum. See
+ * [Datatypes](https://github.com/JetBrains/Exposed/wiki/DataTypes#how-to-use-database-enum-types)
  * documentation  for more info.
  */
 class PGEnum<T : Enum<T>>(enumTypeName: String, enumValue: T?) : PGobject() {

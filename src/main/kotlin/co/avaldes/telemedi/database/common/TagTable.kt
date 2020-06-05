@@ -22,6 +22,11 @@ package co.avaldes.telemedi.database.common
 import org.jetbrains.exposed.dao.id.UUIDTable
 
 open class TagTable(name: String = "") : UUIDTable(name) {
-  val name = varchar("name", 30)
-  val description = varchar("description", 200)
+  val name = varchar("name", NAME_LENGTH)
+  val description = varchar("description", DESCRIPTION_LENGTH)
+
+  companion object {
+    private const val NAME_LENGTH = 30
+    private const val DESCRIPTION_LENGTH = 200
+  }
 }

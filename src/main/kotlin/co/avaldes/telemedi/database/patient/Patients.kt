@@ -28,8 +28,10 @@ import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.`java-time`.datetime
 
 object Patients : UUIDTable() {
-  val name: Column<String> = varchar("name", 60)
-  val identityDocument: Column<String> = varchar("identity_document", 30)
+  private const val NAME_LENGTH = 60
+  private const val IDENTITY_DOCUMENT_LENGTH = 30
+  val name: Column<String> = varchar("name", NAME_LENGTH)
+  val identityDocument: Column<String> = varchar("identity_document", IDENTITY_DOCUMENT_LENGTH)
   val identityDocumentType = customEnumeration(
     "identity_type",
     "identity_document_type_enum",

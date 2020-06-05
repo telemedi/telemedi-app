@@ -8,7 +8,9 @@ plugins {
   id("org.jetbrains.kotlin.kapt") version "1.3.72"
   id("org.jetbrains.kotlin.plugin.allopen") version "1.3.72"
   id("com.github.johnrengelman.shadow") version "5.2.0"
-  id("com.diffplug.gradle.spotless") version "4.0.1"
+  id("com.diffplug.gradle.spotless") version "4.2.1"
+  id("io.gitlab.arturbosch.detekt") version "1.9.1"
+  id("com.github.ben-manes.versions") version "0.28.0"
 
   // Apply the application plugin to add support for building a CLI application.
   application
@@ -39,9 +41,9 @@ dependencies {
   implementation("io.micronaut:micronaut-http-server-netty")
   implementation("io.micronaut:micronaut-http-client")
   implementation("io.micronaut.graphql:micronaut-graphql")
-  implementation("org.postgresql:postgresql:42.2.12")
+  implementation("org.postgresql:postgresql:42.2.13")
   runtimeOnly("ch.qos.logback:logback-classic:1.2.3")
-  runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8") // Align versions of all Kotlin components
+  runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.0") // Align versions of all Kotlin components
   runtimeOnly("io.micronaut.configuration:micronaut-jdbc-hikari")
   implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
 
@@ -51,10 +53,10 @@ dependencies {
   testImplementation(enforcedPlatform("io.micronaut:micronaut-bom:$micronautVersion"))
   testImplementation("org.jetbrains.kotlin:kotlin-test")
   testImplementation("io.micronaut.test:micronaut-test-kotlintest")
-  testImplementation("io.mockk:mockk:1.9.3")
+  testImplementation("io.mockk:mockk:1.10.0")
   // Use the Kotlin JUnit integration.
   testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
-  testImplementation("io.kotlintest:kotlintest-runner-junit5:3.3.2")
+  testImplementation("io.kotlintest:kotlintest-runner-junit5:3.4.2")
 }
 
 application {
