@@ -1,5 +1,6 @@
 val micronautVersion = "2.0.0.M3"
 val kotlinVersion = "1.3.72"
+val exposedVersion = "0.25.1"
 
 plugins {
   // Apply the Kotlin JVM plugin to add support for Kotlin.
@@ -27,6 +28,10 @@ dependencies {
   implementation(enforcedPlatform("io.micronaut:micronaut-bom:$micronautVersion"))
   implementation("io.micronaut:micronaut-inject")
   implementation("io.micronaut:micronaut-validation")
+  implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+  implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+  implementation("org.jetbrains.exposed:exposed-java-time:$exposedVersion")
+  implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
   implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
   implementation("io.micronaut:micronaut-runtime")
@@ -34,8 +39,10 @@ dependencies {
   implementation("io.micronaut:micronaut-http-server-netty")
   implementation("io.micronaut:micronaut-http-client")
   implementation("io.micronaut.graphql:micronaut-graphql")
+  implementation("org.postgresql:postgresql:42.2.12")
   runtimeOnly("ch.qos.logback:logback-classic:1.2.3")
   runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8") // Align versions of all Kotlin components
+  runtimeOnly("io.micronaut.configuration:micronaut-jdbc-hikari")
   implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
 
   kaptTest(enforcedPlatform("io.micronaut:micronaut-bom:$micronautVersion"))
@@ -52,12 +59,13 @@ dependencies {
 
 application {
   // Define the main class for the application.
-  mainClassName = "co.avaldes.telemedi.AppKt"
+  mainClassName = "co.avaldes.telemedi.Application"
 }
 
 spotless {
   kotlin {
     ktlint().userData(mapOf("indent_size" to "2", "continuation_indent_size" to "2"))
+    licenseHeaderFile(".copyright")
   }
   kotlinGradle {
     target("*.gradle.kts")

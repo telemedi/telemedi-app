@@ -17,12 +17,9 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package io.kotlintest.provided
+package co.avaldes.telemedi.common
 
-import io.kotlintest.AbstractProjectConfig
-import io.micronaut.test.extensions.kotlintest.MicronautKotlinTestExtension
-
-object ProjectConfig : AbstractProjectConfig() {
-  override fun listeners() = listOf(MicronautKotlinTestExtension)
-  override fun extensions() = listOf(MicronautKotlinTestExtension)
+enum class Sex {
+  Female,
+  Male
 }

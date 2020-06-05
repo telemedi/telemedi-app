@@ -1,3 +1,8 @@
 micronaut:
   application:
     name: telemedi-app
+datasources:
+  default:
+    url: jdbc:postgresql://${database.url:localhost/postgres}
+    username: ${database.user:postgres}
+    password: ${database.password:mysecretpassword}

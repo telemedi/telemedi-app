@@ -17,12 +17,25 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package io.kotlintest.provided
+package co.avaldes.telemedi.database
 
-import io.kotlintest.AbstractProjectConfig
-import io.micronaut.test.extensions.kotlintest.MicronautKotlinTestExtension
+import io.micronaut.context.annotation.Context
+import io.micronaut.context.annotation.Infrastructure
+import javax.sql.DataSource
+import org.jetbrains.exposed.sql.Database
 
-object ProjectConfig : AbstractProjectConfig() {
-  override fun listeners() = listOf(MicronautKotlinTestExtension)
-  override fun extensions() = listOf(MicronautKotlinTestExtension)
+/**
+ * Initializes the Exposed database connection using a [DataSource] provided by micronaut.
+ *
+ * @author Alejandro Valdes
+ */
+@Context
+@Infrastructure
+class DatabaseConnection(dataSource: DataSource) {
+  init
+  {
+    Database.connect(dataSource).apply {
+      useNestedTransactions = true
+    }
+  }
 }

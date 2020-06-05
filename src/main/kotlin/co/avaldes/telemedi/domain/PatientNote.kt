@@ -17,12 +17,15 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package io.kotlintest.provided
+package co.avaldes.telemedi.domain
 
-import io.kotlintest.AbstractProjectConfig
-import io.micronaut.test.extensions.kotlintest.MicronautKotlinTestExtension
+import co.avaldes.telemedi.database.patient.PatientNotes
+import java.util.UUID
+import org.jetbrains.exposed.dao.UUIDEntity
+import org.jetbrains.exposed.dao.UUIDEntityClass
+import org.jetbrains.exposed.dao.id.EntityID
 
-object ProjectConfig : AbstractProjectConfig() {
-  override fun listeners() = listOf(MicronautKotlinTestExtension)
-  override fun extensions() = listOf(MicronautKotlinTestExtension)
+class PatientNote(id: EntityID<UUID>) : UUIDEntity(id) {
+  companion object : UUIDEntityClass<PatientNote>(PatientNotes)
+  var note by PatientNotes.note
 }

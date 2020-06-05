@@ -17,12 +17,10 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package io.kotlintest.provided
+package co.avaldes.telemedi.database.common
 
-import io.kotlintest.AbstractProjectConfig
-import io.micronaut.test.extensions.kotlintest.MicronautKotlinTestExtension
+import org.jetbrains.exposed.dao.id.UUIDTable
 
-object ProjectConfig : AbstractProjectConfig() {
-  override fun listeners() = listOf(MicronautKotlinTestExtension)
-  override fun extensions() = listOf(MicronautKotlinTestExtension)
+open class NoteTable(name: String = "") : UUIDTable(name) {
+  val note = text("note")
 }

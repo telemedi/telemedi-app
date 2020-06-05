@@ -17,12 +17,8 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package io.kotlintest.provided
+package co.avaldes.telemedi.database.patient
 
-import io.kotlintest.AbstractProjectConfig
-import io.micronaut.test.extensions.kotlintest.MicronautKotlinTestExtension
+import co.avaldes.telemedi.database.common.TagTable
 
-object ProjectConfig : AbstractProjectConfig() {
-  override fun listeners() = listOf(MicronautKotlinTestExtension)
-  override fun extensions() = listOf(MicronautKotlinTestExtension)
-}
+object PatientTags : TagTable()

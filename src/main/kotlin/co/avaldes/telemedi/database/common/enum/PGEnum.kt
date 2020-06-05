@@ -17,12 +17,17 @@
 * along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package io.kotlintest.provided
+package co.avaldes.telemedi.database.common.enum
 
-import io.kotlintest.AbstractProjectConfig
-import io.micronaut.test.extensions.kotlintest.MicronautKotlinTestExtension
+import org.postgresql.util.PGobject
 
-object ProjectConfig : AbstractProjectConfig() {
-  override fun listeners() = listOf(MicronautKotlinTestExtension)
-  override fun extensions() = listOf(MicronautKotlinTestExtension)
+/**
+ * Class that implements a postgresql enum. See [Datatypes](https://github.com/JetBrains/Exposed/wiki/DataTypes#how-to-use-database-enum-types)
+ * documentation  for more info.
+ */
+class PGEnum<T : Enum<T>>(enumTypeName: String, enumValue: T?) : PGobject() {
+  init {
+    value = enumValue?.name
+    type = enumTypeName
+  }
 }
