@@ -1,0 +1,3 @@
+[print_schema]
+file = "src/model/schema.rs"
+import_types = ["diesel::sql_types::*", "crate::model::enums::*"]
